@@ -5,3 +5,5 @@ Exec=depk-sensitivity-matcher
 Icon=depk-sensitivity-matcher
 Type=Application
 Categories=Game;Utility;
+StartupWMClass=DePk-Sensitivity-Matcher-Rust
+Terminal=false
