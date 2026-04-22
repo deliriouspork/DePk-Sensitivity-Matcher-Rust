@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=DePk Sensitivity Matcher
+Comment=Match mouse sensitivity between 3D games
+Exec=depk-sensitivity-matcher
+Icon=depk-sensitivity-matcher
+Type=Application
+Categories=Game;Utility;
