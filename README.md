@@ -37,6 +37,7 @@ Note: Requires sudo or user in the input group.
 * Download the [binary](https://github.com/deliriouspork/DePk-Sensitivity-Matcher-Rust/releases).
 * chmod +x DePkSensMatch
 * ./DePkSensMatch
+Note: Requires sudo or user in the input group.
 
 ## Settings
 Settings are saved automatically on close to:
