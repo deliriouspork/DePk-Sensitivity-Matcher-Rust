@@ -119,6 +119,8 @@ fn main() {
 
     let ui = MainWindow::new().unwrap();
 
+    ui.window().set_identifier("depk-sensitivity-matcher"); // two windows fix
+
     // apply loaded settings to UI
     ui.set_sens_text(saved.sens.as_str().into());
     ui.set_yaw_text(saved.yaw.as_str().into());
