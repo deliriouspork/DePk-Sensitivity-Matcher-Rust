@@ -24,6 +24,7 @@ yay -S depk-sensitivity-matcher
 Note: Or use AUR helper of choice.
 
 ### From Source:
+Requires `rust` (cargo) and a kernel with uinput support (virtually all distros).
 ```shell
 git clone https://github.com/deliriouspork/DePk-Sensitivity-Matcher-Rust
 cd DePk-Sensitivity-Matcher-Rust/
