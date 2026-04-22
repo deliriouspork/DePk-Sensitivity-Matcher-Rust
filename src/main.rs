@@ -99,8 +99,6 @@ fn compute_increment(yaw: f64, sens: f64) -> slint::SharedString {
 }
 
 fn main() {
-    unsafe { std::env::set_var("WINIT_WM_CLASS", "depk-sensitivity-matcher"); }
-
     let saved = load_settings();
 
     // parse saved strings into runtime values, fall back to defaults on error
@@ -120,6 +118,8 @@ fn main() {
     let mouse_tx = start_mouse_thread();
 
     let ui = MainWindow::new().unwrap();
+
+    slint::set_xdg_app_id("depk-sensitivity-matcher").ok(); // two window fix
 
     // apply loaded settings to UI
     ui.set_sens_text(saved.sens.as_str().into());
