@@ -6,17 +6,17 @@ use std::sync::{
 };
 use std::thread;
 
-// All hotkey event types go here
+// all hotkey event types go here
 pub enum HotkeyEvent {
     AltBackspace,
 }
 
 pub fn start_listener(tx: Sender<HotkeyEvent>) {
-    // Shared atomic bool so all device threads agree on whether alt is held.
-    // Needed as evdev treats each device separatey
+    // shared atomic bool so all device threads agree on whether alt is held.
+    // needed as evdev treats each device separatey
     let alt_held = Arc::new(AtomicBool::new(false));
 
-    // Filter to only devices that have a backspace key
+    // filter to only devices that have a backspace key
     let keyboards: Vec<(_, Device)> = evdev::enumerate()
         .filter(|(_, dev)| {
             dev.supported_keys()
@@ -49,24 +49,24 @@ pub fn start_listener(tx: Sender<HotkeyEvent>) {
                             let value = event.value();
                             // value: 1 = keydown, 0 = keyup, 2 = autorepeat
 
-                            // Track alt state
+                            // track alt state
                             if key == Key::KEY_LEFTALT || key == Key::KEY_RIGHTALT {
                                 alt_held.store(value == 1, Ordering::SeqCst);
                             }
 
-                            // Fire on Alt+Backspace keydown only (not autorepeat)
+                            // fire on Alt+Backspace keydown only (not autorepeat)
                             if key == Key::KEY_BACKSPACE
                                 && value == 1
                                 && alt_held.load(Ordering::SeqCst)
                             {
-                                // Ignore send errors — main thread may have exited
+                                // ignore send errors — main thread may have exited
                                 let _ = tx.send(HotkeyEvent::AltBackspace);
                             }
                         }
                     }
                     Err(e) => {
                         eprintln!("Lost device {:?}: {}", path, e);
-                        break; // Device disconnected etc., kill this thread
+                        break; // device disconnected etc., kill this thread
                     }
                 }
             }
