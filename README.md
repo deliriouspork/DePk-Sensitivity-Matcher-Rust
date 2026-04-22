@@ -29,7 +29,7 @@ Requires `rust` (cargo) and a kernel with uinput support (virtually all distros)
 git clone https://github.com/deliriouspork/DePk-Sensitivity-Matcher-Rust
 cd DePk-Sensitivity-Matcher-Rust/
 cargo build --release
-sudo ./target/release/depk-sensitivity-matcher
+sudo ./target/release/Depk-Sensitivity-Matcher-Rust
 ```
 Note: Requires sudo or user in the input group.
 
