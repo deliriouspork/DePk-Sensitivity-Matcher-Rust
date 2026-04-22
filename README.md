@@ -1,4 +1,4 @@
-<img width="391" height="240" alt="mainwindow" src="https://github.com/user-attachments/assets/a79e7a66-830e-4118-a4be-723d5ecd7df1" />
+<img width="391" height="266" alt="Screenshot_20260421_223014" src="https://github.com/user-attachments/assets/5e6ff4dd-8c18-42fa-a469-15e00eed3abf" />
 
 # DePk Sensitivity Matcher
 A tool for matching mouse sensitivity between 3D games on Linux using evdev and uinput. Works on both X11 and Wayland.
