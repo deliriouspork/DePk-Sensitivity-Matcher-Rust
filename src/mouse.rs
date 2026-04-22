@@ -2,6 +2,7 @@ use evdev::uinput::{VirtualDevice, VirtualDeviceBuilder};
 use evdev::{AttributeSet, Key, RelativeAxisType};
 use std::thread;
 use std::time::Duration;
+use std::sync::mpsc::{self, Sender};
 
 pub struct VirtualMouse {
     device: VirtualDevice,
@@ -52,4 +53,21 @@ impl VirtualMouse {
             thread::sleep(Duration::from_millis(1));
         }
     }
+}
+
+pub fn start_mouse_thread() -> Sender<(f64, f64)> {
+    let (tx, rx) = mpsc::channel::<(f64, f64)>();
+    thread::spawn(move || {
+        let mut vmouse = match VirtualMouse::new() {
+            Ok(m) => m,
+            Err(e) => {
+                eprintln!("Failed to create virtual mouse: {}", e);
+                return;
+            }
+        };
+        for (total_x, speed) in rx {
+            vmouse.move_relative(total_x, speed);
+        }
+    });
+    tx
 }

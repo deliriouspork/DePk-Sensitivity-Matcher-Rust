@@ -1,4 +1,4 @@
-use evdev::{Device, EventType, Key};
+use evdev::{EventType, Key};
 use std::sync::{
     atomic::{AtomicBool, Ordering},
     mpsc::Sender,
@@ -17,7 +17,7 @@ pub fn start_listener(tx: Sender<HotkeyEvent>) {
     let alt_held = Arc::new(AtomicBool::new(false));
 
     // filter to only devices that have a backspace key
-    let keyboards: Vec<(_, Device)> = evdev::enumerate()
+    let keyboards: Vec<_> = evdev::enumerate()
         .filter(|(_, dev)| {
             dev.supported_keys()
                 .map_or(false, |keys| keys.contains(Key::KEY_BACKSPACE))
