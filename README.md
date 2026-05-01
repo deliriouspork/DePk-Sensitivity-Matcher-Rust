@@ -1,3 +1,7 @@
+> ⚠️ **Migrated to codeberg. Don't use this repo.**
+>
+> **➜ [DePk Sensitivity Matcher (Rust)](https://codeberg.org/deliriouspork/DePk-Sensitivity-Matcher-Rust)**
+
 <img width="391" height="266" alt="Screenshot_20260421_223014" src="https://github.com/user-attachments/assets/5e6ff4dd-8c18-42fa-a469-15e00eed3abf" />
 
 # DePk Sensitivity Matcher
